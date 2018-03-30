@@ -9,9 +9,7 @@ namespace ReadDeviceToCloudMessages
 {
     internal class Program
     {
-        private static string _connectionString =
-                                        "HostName=GredjaIoT.azure-devices.net;SharedAccessKeyName=GredjaIoT.azure-devices.net;SharedAccessKey=UlU/IIEXHNyk0Spz9bCw2ESyss2CjfR+ZhjGHEv4+78="
-                        ;
+        private const string ConnectionString = "HostName=GredjaIoT.azure-devices.net;SharedAccessKeyName=GredjaIoT.azure-devices.net;SharedAccessKey=UlU/IIEXHNyk0Spz9bCw2ESyss2CjfR+ZhjGHEv4+78=";
 
         private static string _iotHubD2CEndpoint = "messages/events";
         private static EventHubClient _eventHubClient;
@@ -19,7 +17,7 @@ namespace ReadDeviceToCloudMessages
         private static void Main(string[] args)
         {
             Console.WriteLine("Receive messages. Ctrl-C to exit.\n");
-            _eventHubClient = EventHubClient.CreateFromConnectionString(_connectionString, _iotHubD2CEndpoint);
+            _eventHubClient = EventHubClient.CreateFromConnectionString(ConnectionString, _iotHubD2CEndpoint);
 
             var d2CPartitions = _eventHubClient.GetRuntimeInformation().PartitionIds;
 
