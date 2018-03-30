@@ -19,8 +19,9 @@ namespace CreateDeviceIdentity
 
         private static async Task AddDeviceAsync()
         {
-            string deviceId = "myFirstDevice";
+            const string deviceId = "myFirstDevice";
             Device device;
+
             try
             {
                 device = await _registryManager.AddDeviceAsync(new Device(deviceId));
@@ -29,6 +30,7 @@ namespace CreateDeviceIdentity
             {
                 device = await _registryManager.GetDeviceAsync(deviceId);
             }
+
             Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
         }
     }
